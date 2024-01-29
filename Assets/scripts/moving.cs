@@ -9,7 +9,8 @@ public class moving : MonoBehaviour
     Rigidbody2D body;
     public float force = 5;
     bool djump = false;
-    int jumpm = 1;
+    int jumpm = 0;
+    ContactFilter2D nofilter;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class moving : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.D))
         {
@@ -27,9 +28,9 @@ public class moving : MonoBehaviour
         {
             //transform.Translate(Vector2.left * speed * Time.deltaTime);//
             bool move = true;
-            if (Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale / 2, 0, transform.TransformDirection(Vector2.left)/*, out ray, transform.rotation, 0.1f*/))
+            /*if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale / 2, 0, transform.TransformDirection(Vector2.left), 0.1f))
             {
-                print("tesst");
+                print(ray);
                 if (ray.collider.CompareTag("wall") || ray.collider.CompareTag("ground"))
                 {
                     move = false;
@@ -38,16 +39,30 @@ public class moving : MonoBehaviour
                 {
 
                 }
-            }
+            }*/
             if (move)
             {
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && jumpm < 1 && !djump|| Input.GetKeyDown(KeyCode.Space) && jumpm < 2 && djump)
         {
+            if (ray = Physics2D.Raycast(this.gameObject.transform.position, Vector2.down, 10))
+            {
+                print("test");
+                Debug.DrawLine(this.gameObject.transform.position, ray.point, Color.red, 2.5f, false);
+                if (ray.collider.CompareTag("ground"))
+                {
+
+                }
+            }
             //gör en rey cast ner för att se om man har landat
-                body.AddForce(transform.up * force);
+            body.AddForce(transform.up * force);
+            jumpm++;
         }
+        
     }
 }
