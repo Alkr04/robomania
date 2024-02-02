@@ -12,6 +12,7 @@ public class moving : MonoBehaviour
     int jumpm = 0;
     ContactFilter2D nofilter;
     float distoground;
+    public float lazer = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +49,7 @@ public class moving : MonoBehaviour
             }
         }
     }
-    bool ground()
+    /*bool ground()
     {
         Debug.DrawRay(transform.position, -Vector3.up, Color.yellow, 20);
         ray = Physics2D.Raycast(transform.position, -Vector2.up, distoground + 0.1f);
@@ -62,7 +63,7 @@ public class moving : MonoBehaviour
             return false;
         }
 
-    }
+    }*/
     void Update()
     {
         /*if (ground())
@@ -72,16 +73,19 @@ public class moving : MonoBehaviour
         }*/
         if (Input.GetKeyDown(KeyCode.Space) && jumpm < 1 && !djump|| Input.GetKeyDown(KeyCode.Space) && jumpm < 2 && djump)
         {
+            //Debug.Log("jtest");
             body.AddForce(transform.up * force);
             jumpm++;
             //gör en rey cast ner för att se om man har landat
         }
-        if (ray = Physics2D.Raycast(transform.position, Vector2.down,0.5f, LayerMask.GetMask("ground")))
+        if (ray = Physics2D.Raycast(transform.position, Vector2.down,lazer, LayerMask.GetMask("ground")))
         {
-             //print(ray.point*5);
-             Debug.DrawRay(transform.position, Vector2.down*0.5f, Color.red, 30, false);
+            //print("");
+            //Debug.Log("testing");
+             Debug.DrawRay(transform.position, Vector2.down*lazer, Color.red, 30, false);
             if (ray.collider.gameObject.tag == "ground")
              {
+                //if jump does not work and the lazer is not visible change the lazer float
                 print("test");
                 jumpm = 0;
              }
