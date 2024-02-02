@@ -11,10 +11,12 @@ public class moving : MonoBehaviour
     bool djump = false;
     int jumpm = 0;
     ContactFilter2D nofilter;
+    float distoground;
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        distoground = GetComponent<Collider2D>().bounds.extents.y;
     }
 
     // Update is called once per frame
@@ -46,22 +48,43 @@ public class moving : MonoBehaviour
             }
         }
     }
+    bool ground()
+    {
+        Debug.DrawRay(transform.position, -Vector3.up, Color.yellow, 20);
+        ray = Physics2D.Raycast(transform.position, -Vector2.up, distoground + 0.1f);
+        print(ray);
+        if (ray.collider.CompareTag("ground"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
     void Update()
     {
+        /*if (ground())
+        {
+            print("grounded");
+            jumpm = 0;
+        }*/
         if (Input.GetKeyDown(KeyCode.Space) && jumpm < 1 && !djump|| Input.GetKeyDown(KeyCode.Space) && jumpm < 2 && djump)
         {
-            if (ray = Physics2D.Raycast(this.gameObject.transform.position, Vector2.down, 10))
-            {
-                print("test");
-                Debug.DrawLine(this.gameObject.transform.position, ray.point, Color.red, 2.5f, false);
-                if (ray.collider.CompareTag("ground"))
-                {
-
-                }
-            }
-            //gör en rey cast ner för att se om man har landat
             body.AddForce(transform.up * force);
             jumpm++;
+            //gör en rey cast ner för att se om man har landat
+        }
+        if (ray = Physics2D.Raycast(transform.position, Vector2.down,0.5f, LayerMask.GetMask("ground")))
+        {
+             //print(ray.point*5);
+             Debug.DrawRay(transform.position, Vector2.down*0.5f, Color.red, 30, false);
+            if (ray.collider.gameObject.tag == "ground")
+             {
+                print("test");
+                jumpm = 0;
+             }
         }
         
     }
