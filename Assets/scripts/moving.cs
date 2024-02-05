@@ -8,16 +8,18 @@ public class moving : MonoBehaviour
     public int speed = 5;
     Rigidbody2D body;
     public float force = 5;
-    bool djump = false;
+    public bool djump = false;
     int jumpm = 0;
     ContactFilter2D nofilter;
     float distoground;
     public float lazer = 1f;
+    public player_attack attack;
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         distoground = GetComponent<Collider2D>().bounds.extents.y;
+        attack = this.GetComponent<player_attack>();
     }
 
     // Update is called once per frame
@@ -25,24 +27,34 @@ public class moving : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            //transform.Translate(Vector2.left * speed * Time.deltaTime);//
+            attack.rigth = true;
             bool move = true;
-            /*if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale / 2, 0, transform.TransformDirection(Vector2.left), 0.1f))
+            if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.right,0.5f))
             {
-                print(ray);
                 if (ray.collider.CompareTag("wall") || ray.collider.CompareTag("ground"))
                 {
                     move = false;
                 }
-                else
+            }
+            if (move)
+            {
+                transform.Translate(Vector2.right * speed * Time.deltaTime);
+            }
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            //transform.Translate(Vector2.left * speed * Time.deltaTime);//
+            attack.rigth = false;
+            bool move = true;
+            if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.left, 0.5f/*, LayerMask.GetMask("wall"), LayerMask.GetMask("ground")*/))
+            {
+                
+                //print(ray.collider.tag);
+                if (ray.collider.CompareTag("wall") || ray.collider.CompareTag("ground"))
                 {
-
+                    move = false;
                 }
-            }*/
+            }
             if (move)
             {
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -78,6 +90,7 @@ public class moving : MonoBehaviour
             jumpm++;
             //gör en rey cast ner för att se om man har landat
         }
+        /*
         if (ray = Physics2D.Raycast(transform.position, Vector2.down,lazer, LayerMask.GetMask("ground")))
         {
             //print("");
@@ -90,6 +103,14 @@ public class moving : MonoBehaviour
                 jumpm = 0;
              }
         }
+        */
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "ground" || collision.gameObject.tag == "wall")
+        {
+            jumpm = 0;
+        }
     }
 }
