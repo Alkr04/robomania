@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class enemy_moving_normal : MonoBehaviour
 {
-    bool rigth = false;
+    public bool rigth = false;
+    public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (rigth)
+        turn();
+        if(collision.gameObject.tag == "Player")
         {
-            rigth = false;
-        }
-        else
-        {
-            rigth = true;
+            collision.transform.GetComponent<moving>().hp -= damage;
+            collision.transform.GetComponent<moving>().hurt();
         }
     }
 
@@ -33,5 +32,17 @@ public class enemy_moving_normal : MonoBehaviour
         {
             transform.Translate(Vector2.left * 5 * Time.deltaTime);
         }
+    }
+    public void turn()
+    {
+        if (rigth)
+        {
+            rigth = false;
+        }
+        else
+        {
+            rigth = true;
+        }
+
     }
 }

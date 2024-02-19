@@ -14,6 +14,7 @@ public class moving : MonoBehaviour
     float distoground;
     public float lazer = 1f;
     public player_attack attack;
+    public int hp = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -112,5 +113,13 @@ public class moving : MonoBehaviour
         {
             jumpm = 0;
         }
+    }
+    public void hurt()
+    {
+        if(hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 }
