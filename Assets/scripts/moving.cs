@@ -15,12 +15,16 @@ public class moving : MonoBehaviour
     public float lazer = 1f;
     public player_attack attack;
     public int hp = 10;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         distoground = GetComponent<Collider2D>().bounds.extents.y;
         attack = this.GetComponent<player_attack>();
+        //påminelse: få barnen ifrån health i ui för att kuna disabla dom när man tar skada
+        Transform[] children = GetComponentsInChildren<Transform>();
+        print(children[1]);
     }
 
     // Update is called once per frame
@@ -116,6 +120,10 @@ public class moving : MonoBehaviour
     }
     public void hurt()
     {
+        for (int i = 0; i < damage; i++)
+        {
+            hp--;
+        }
         if(hp <= 0)
         {
             Destroy(this.gameObject);

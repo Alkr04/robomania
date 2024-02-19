@@ -16,7 +16,7 @@ public class enemy_moving_normal : MonoBehaviour
         turn();
         if(collision.gameObject.tag == "Player")
         {
-            collision.transform.GetComponent<moving>().hp -= damage;
+            collision.transform.GetComponent<moving>().damage = damage;
             collision.transform.GetComponent<moving>().hurt();
         }
     }
