@@ -16,6 +16,11 @@ public class moving : MonoBehaviour
     public player_attack attack;
     public int hp = 10;
     public int damage;
+    //Stack<Transform> health = new Stack<Transform>();
+    public Transform Hbar;
+    List<GameObject> Children = new List<GameObject>();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +28,19 @@ public class moving : MonoBehaviour
         distoground = GetComponent<Collider2D>().bounds.extents.y;
         attack = this.GetComponent<player_attack>();
         //påminelse: få barnen ifrån health i ui för att kuna disabla dom när man tar skada
-        Transform[] children = GetComponentsInChildren<Transform>();
-        print(children[1]);
+        //Transform[] H = Hbar.GetComponentsInChildren<Transform>();
+        /*foreach(Transform Hbar in transform)
+        {
+            health.Push(Hbar.transform);
+        }*/
+        foreach(Transform child in Hbar) Children.Add(child.gameObject);
+        print(Children.Count);
+        hp = Children.Count;
+        /*for (int i = 1; i < H.Length; i++)
+        {
+            health.Push(H[i]);
+        }*/
+        //Hbar = FindObjectOfType<health>();
     }
 
     // Update is called once per frame
@@ -123,6 +139,7 @@ public class moving : MonoBehaviour
         for (int i = 0; i < damage; i++)
         {
             hp--;
+            Destroy(Children[hp]);
         }
         if(hp <= 0)
         {
