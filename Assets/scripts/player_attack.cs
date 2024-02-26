@@ -8,6 +8,8 @@ public class player_attack : MonoBehaviour
     RaycastHit2D ray;
     public bool rigth = true;
     public float attack = 1;
+    public Transform Ebar;
+    public int steam = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,5 +54,28 @@ public class player_attack : MonoBehaviour
         cooling = true;
         yield return new WaitForSeconds(0.5f);
         cooling = false;
+    }
+    public void energy(int decrese)
+    {
+        steam = steam - decrese;
+        switch (steam)
+        {
+            case (0):
+
+                break;
+            case (1):
+
+                break;
+            case (2):
+
+                break;
+            case (3):
+
+                break;
+            case (4):
+
+                break;
+        }
+
     }
 }

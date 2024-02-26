@@ -15,10 +15,11 @@ public class moving : MonoBehaviour
     public float lazer = 1f;
     public player_attack attack;
     public int hp = 10;
-    public int damage;
+    //public int damage;
     //Stack<Transform> health = new Stack<Transform>();
     public Transform Hbar;
     List<GameObject> Children = new List<GameObject>();
+    
 
 
     // Start is called before the first frame update
@@ -27,7 +28,6 @@ public class moving : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         distoground = GetComponent<Collider2D>().bounds.extents.y;
         attack = this.GetComponent<player_attack>();
-        //påminelse: få barnen ifrån health i ui för att kuna disabla dom när man tar skada
         //Transform[] H = Hbar.GetComponentsInChildren<Transform>();
         /*foreach(Transform Hbar in transform)
         {
@@ -134,7 +134,7 @@ public class moving : MonoBehaviour
             jumpm = 0;
         }
     }
-    public void hurt()
+    public void hurt(int damage)
     {
         for (int i = 0; i < damage; i++)
         {
@@ -147,4 +147,5 @@ public class moving : MonoBehaviour
         }
 
     }
+    
 }
