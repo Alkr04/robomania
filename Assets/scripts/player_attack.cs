@@ -9,11 +9,14 @@ public class player_attack : MonoBehaviour
     public bool rigth = true;
     public float attack = 1;
     public Transform Ebar;
-    public int steam = 4;
+    public int steam = 5;
+    int eabillity = 1;
+    public moving moving;
+    public Transform cog;
     // Start is called before the first frame update
     void Start()
     {
-        
+        moving = this.GetComponent<moving>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,37 @@ public class player_attack : MonoBehaviour
                 }
             }
             StartCoroutine(cool());
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            switch (eabillity)
+            {
+                case (1):
+                    int i = 0;
+                    //t = Instantiate(cog, moving.Hbar.transform.position, moving.Hbar.transform.rotation) as ;
+                    //t.transform.parent = moving.Hbar;
+                    if (steam >= 5 && moving.hp < moving.Mhp)
+                    {
+                        steam = steam - 5;
+                        Instantiate(cog, moving.Hbar);
+
+                        foreach (Transform child in moving.Hbar)
+                        {
+                            
+                            if (i < moving.Children.Count && child.gameObject == moving.Children[i])
+                            {
+                                 print(i);
+                            }
+                            else
+                            {
+                                moving.Children.Add(child.gameObject);
+                            }
+                             i++;
+                        }
+                        moving.hp = moving.Children.Count;
+                    }
+                    break;
+            }
         }
     }
     IEnumerator cool()

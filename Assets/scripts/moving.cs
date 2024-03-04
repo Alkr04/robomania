@@ -14,11 +14,12 @@ public class moving : MonoBehaviour
     float distoground;
     public float lazer = 1f;
     public player_attack attack;
-    public int hp = 10;
+    public int hp = 3;
+    public int Mhp = 3;
     //public int damage;
     //Stack<Transform> health = new Stack<Transform>();
     public Transform Hbar;
-    List<GameObject> Children = new List<GameObject>();
+    public List<GameObject> Children = new List<GameObject>();
     
 
 
