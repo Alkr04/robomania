@@ -13,6 +13,7 @@ public class player_attack : MonoBehaviour
     int eabillity = 1;
     public moving moving;
     public Transform cog;
+    public Transform pointer;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +62,7 @@ public class player_attack : MonoBehaviour
                     //t.transform.parent = moving.Hbar;
                     if (steam >= 5 && moving.hp < moving.Mhp)
                     {
-                        steam = steam - 5;
+                        energy(5);
                         Instantiate(cog, moving.Hbar);
 
                         foreach (Transform child in moving.Hbar)
@@ -95,10 +96,10 @@ public class player_attack : MonoBehaviour
         switch (steam)
         {
             case (0):
-
+                pointer.transform.eulerAngles = new Vector3(0, 0,60);
                 break;
             case (1):
-
+                pointer.transform.eulerAngles = new Vector3(0, 0, 43);
                 break;
             case (2):
 
