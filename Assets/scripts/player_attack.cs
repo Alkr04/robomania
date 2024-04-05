@@ -10,10 +10,12 @@ public class player_attack : MonoBehaviour
     public float attack = 1;
     public Transform Ebar;
     public int steam = 5;
+    public int msteam = 5;
     int eabillity = 1;
     public moving moving;
     public Transform cog;
     public Transform pointer;
+    public Transform limiter;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,19 +100,56 @@ public class player_attack : MonoBehaviour
             case (0):
                 pointer.transform.eulerAngles = new Vector3(0, 0,60);
                 break;
-            case (1):
+            case (5):
                 pointer.transform.eulerAngles = new Vector3(0, 0, 43);
                 break;
-            case (2):
-
+            case (10):
+                pointer.transform.eulerAngles = new Vector3(0, 0, 28);
                 break;
-            case (3):
-
+            case (15):
+                pointer.transform.eulerAngles = new Vector3(0, 0, 12);
                 break;
-            case (4):
-
+            case (20):
+                pointer.transform.eulerAngles = new Vector3(0, 0, -9);
+                break;
+            case (25):
+                pointer.transform.eulerAngles = new Vector3(0, 0, -30);
+                break;
+            case (30):
+                pointer.transform.eulerAngles = new Vector3(0, 0, -47);
+                break;
+            case (35):
+                pointer.transform.eulerAngles = new Vector3(0, 0, -67);
                 break;
         }
 
+    }
+    public void steam_upgrade()
+    {
+        msteam = msteam + 5;
+        switch (msteam)
+        {
+            case (5):
+                limiter.transform.eulerAngles = new Vector3(0, 0, -40);
+                break;
+            case (10):
+                limiter.transform.eulerAngles = new Vector3(0, 0, -60);
+                break;
+            case (15):
+                limiter.transform.eulerAngles = new Vector3(0, 0, -80);
+                break;
+            case (20):
+                limiter.transform.eulerAngles = new Vector3(0, 0, -106);
+                break;
+            case (25):
+                limiter.transform.eulerAngles = new Vector3(0, 0, -132);
+                break;
+            case (30):
+                limiter.transform.eulerAngles = new Vector3(0, 0, -150);
+                break;
+            case (35):
+                limiter.transform.eulerAngles = new Vector3(0, 0, -180);
+                break;
+        }
     }
 }

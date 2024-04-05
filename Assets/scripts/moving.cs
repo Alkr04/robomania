@@ -141,6 +141,7 @@ public class moving : MonoBehaviour
         {
             hp--;
             Destroy(Children[hp]);
+            Children.Remove(Children[hp]);
         }
         if(hp <= 0)
         {
