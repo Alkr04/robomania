@@ -6,6 +6,7 @@ public class enemy_health : MonoBehaviour
 {
     public int hp = 1;
     enemy_moving_normal mover;
+    public Collider2D Stank;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class enemy_health : MonoBehaviour
         print("plz turn");
         if (hp == 0)
         {
+            Instantiate(Stank, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
     }

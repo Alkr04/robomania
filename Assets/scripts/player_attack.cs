@@ -16,6 +16,8 @@ public class player_attack : MonoBehaviour
     public Transform cog;
     public Transform pointer;
     public Transform limiter;
+    public AudioSource sorce;
+    public AudioClip slash;
     // Start is called before the first frame update
     void Start()
     {

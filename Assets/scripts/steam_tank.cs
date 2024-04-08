@@ -17,11 +17,18 @@ public class steam_tank : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        
+
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Player")
         {
-            collision.transform.GetComponent<player_attack>().energy(-5);
-            Destroy(this.gameObject);
+            if (collision.transform.GetComponent<player_attack>().steam < collision.transform.GetComponent<player_attack>().msteam)
+            {
+                collision.transform.GetComponent<player_attack>().energy(-5);
+                Destroy(this.gameObject);
+            }
         }
-
     }
 }
