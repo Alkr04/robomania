@@ -6,6 +6,8 @@ public class enemy_moving_normal : MonoBehaviour
 {
     public bool rigth = false;
     public int damage = 1;
+    public AudioClip bonk;
+    public AudioSource sorce;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class enemy_moving_normal : MonoBehaviour
         turn();
         if(collision.gameObject.tag == "Player")
         {
+            sorce.PlayOneShot(bonk);
             //collision.transform.GetComponent<moving>().damage = damage;
             collision.transform.GetComponent<moving>().hurt(damage);
         }

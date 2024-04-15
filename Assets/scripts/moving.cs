@@ -20,6 +20,9 @@ public class moving : MonoBehaviour
     //Stack<Transform> health = new Stack<Transform>();
     public Transform Hbar;
     public List<GameObject> Children = new List<GameObject>();
+    public AudioClip boing;
+    public AudioSource sorce;
+    
     
 
 
@@ -108,6 +111,7 @@ public class moving : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && jumpm < 1 && !djump|| Input.GetKeyDown(KeyCode.Space) && jumpm < 2 && djump)
         {
             //Debug.Log("jtest");
+            sorce.PlayOneShot(boing);
             body.AddForce(transform.up * force);
             jumpm++;
             //gör en rey cast ner för att se om man har landat

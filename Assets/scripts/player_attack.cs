@@ -37,6 +37,7 @@ public class player_attack : MonoBehaviour
                     print(ray.transform.tag);
                     if (ray.collider.tag == "enemy")
                     {
+                        sorce.PlayOneShot(slash);
                         ray.transform.GetComponent<enemy_health>().hp -= 1;
                         ray.transform.GetComponent<enemy_health>().damage();
                     }
@@ -49,6 +50,7 @@ public class player_attack : MonoBehaviour
                     //print("left");
                     if (ray.collider.tag == "enemy")
                     {
+                        sorce.PlayOneShot(slash);
                         ray.transform.GetComponent<enemy_health>().hp -= 1;
                         ray.transform.GetComponent<enemy_health>().damage();
                     }
