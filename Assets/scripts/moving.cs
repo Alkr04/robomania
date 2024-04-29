@@ -22,6 +22,7 @@ public class moving : MonoBehaviour
     public List<GameObject> Children = new List<GameObject>();
     public AudioClip boing;
     public AudioSource sorce;
+    public GameObject died;
     
     
 
@@ -45,6 +46,8 @@ public class moving : MonoBehaviour
             health.Push(H[i]);
         }*/
         //Hbar = FindObjectOfType<health>();
+        died = GameObject.Find("Died_screen");
+        died.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,7 +57,7 @@ public class moving : MonoBehaviour
         {
             attack.rigth = true;
             bool move = true;
-            if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.right,0.5f))
+            if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.right,0.3f))
             {
                 if (ray.collider.CompareTag("wall") || ray.collider.CompareTag("ground"))
                 {
@@ -71,7 +74,7 @@ public class moving : MonoBehaviour
             //transform.Translate(Vector2.left * speed * Time.deltaTime);//
             attack.rigth = false;
             bool move = true;
-            if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.left, 0.5f/*, LayerMask.GetMask("wall"), LayerMask.GetMask("ground")*/))
+            if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.left, 0.3f/*, LayerMask.GetMask("wall"), LayerMask.GetMask("ground")*/))
             {
                 
                 //print(ray.collider.tag);
@@ -149,7 +152,9 @@ public class moving : MonoBehaviour
         }
         if(hp <= 0)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            died.SetActive(true);
+            this.enabled = false;
         }
 
     }
