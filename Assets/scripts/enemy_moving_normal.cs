@@ -11,7 +11,7 @@ public class enemy_moving_normal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sorce = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioSource>();
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {

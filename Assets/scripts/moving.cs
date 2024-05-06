@@ -144,17 +144,18 @@ public class moving : MonoBehaviour
     }
     public void hurt(int damage)
     {
-        for (int i = 0; i < damage; i++)
+        for (int i = 0; i < damage; i++ )
         {
             hp--;
             Destroy(Children[hp]);
             Children.Remove(Children[hp]);
-        }
-        if(hp <= 0)
-        {
-            //Destroy(this.gameObject);
-            died.SetActive(true);
-            this.enabled = false;
+            print("test");
+            if(hp <= 0)
+            {
+                //Destroy(this.gameObject);
+                died.SetActive(true);
+                this.enabled = false;
+            }
         }
 
     }

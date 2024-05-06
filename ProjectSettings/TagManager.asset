@@ -8,6 +8,7 @@ TagManager:
   - ground
   - enemy
   - Counter
+  - audio
   layers:
   - Default
   - TransparentFX
