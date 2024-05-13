@@ -18,10 +18,12 @@ public class player_attack : MonoBehaviour
     public Transform limiter;
     public AudioSource sorce;
     public AudioClip slash;
+    public player_animator panim;
     // Start is called before the first frame update
     void Start()
     {
         moving = this.GetComponent<moving>();
+        panim = GetComponent<player_animator>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class player_attack : MonoBehaviour
         {
             if (rigth)
             {
+                panim.stattack();
                 if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.right,attack))
                 {
                     //print("rigth");

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5075478977369817060}
   m_Layer: 0
   m_Name: floating_pipe
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.9519062, y: 0.05916524}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 140.3191, y: 99.21}
+  m_Size: {x: 28.479633, y: 14.304312}
   m_EdgeRadius: 0
 --- !u!50 &5075478977369817060
 Rigidbody2D:
