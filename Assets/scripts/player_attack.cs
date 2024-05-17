@@ -33,7 +33,7 @@ public class player_attack : MonoBehaviour
         {
             if (rigth)
             {
-                panim.stattack();
+                panim.stattack(rigth);
                 if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.right,attack))
                 {
                     //print("rigth");
@@ -48,6 +48,7 @@ public class player_attack : MonoBehaviour
             }
             else
             {
+                panim.stattack(rigth);
                 if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.left, 1f))
                 {
                     //print("left");

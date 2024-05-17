@@ -23,7 +23,7 @@ public class moving : MonoBehaviour
     public AudioClip boing;
     public AudioSource sorce;
     public GameObject died;
-    
+    public player_animator panim;
     
 
 
@@ -48,6 +48,7 @@ public class moving : MonoBehaviour
         //Hbar = FindObjectOfType<health>();
         died = GameObject.Find("Died_screen");
         died.SetActive(false);
+        panim = GetComponent<player_animator>();
     }
 
     // Update is called once per frame
@@ -66,6 +67,7 @@ public class moving : MonoBehaviour
             }
             if (move)
             {
+                panim.smove(attack.rigth);
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
             }
         }
@@ -85,6 +87,7 @@ public class moving : MonoBehaviour
             }
             if (move)
             {
+                panim.smove(attack.rigth);
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
             }
         }
