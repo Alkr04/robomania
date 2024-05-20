@@ -21,7 +21,7 @@ public class enemy_health : MonoBehaviour
     public void damage()
     {
         mover.turn();
-        print("plz turn");
+        //print("plz turn");
         if (hp == 0)
         {
             Instantiate(Stank, transform.position, transform.rotation);

@@ -12,10 +12,11 @@ public class player_animator : MonoBehaviour
     public SpriteRenderer rslashrender;
     public SpriteRenderer lslashrender;
     public player_attack Attack;
-    Vector3 pslash = new Vector3(30, 3.5f, 0);
+    Vector3 pslash = new Vector3(30, 0.6196142f, 0);
     public Sprite[] startmove;
     public Sprite[] moving;
     bool m = false;
+    bool attacking = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,20 +43,33 @@ public class player_animator : MonoBehaviour
             StartCoroutine(Move(rigth));
         }
     }
+    public void turn(bool rigth)
+    {
+        //print("t");
+        if (Input.GetKey(KeyCode.A))
+        {
+            rsprites.flipX = true;
+        }
+        else if(Input.GetKey(KeyCode.D))
+        {
+            rsprites.flipX = false;
+        }
+    }
 
     public IEnumerator attack(bool rigth)
     {
+        attacking = true;
         if (!rigth)
         {
             rsprites.flipX = true;
             rslashrender.flipX = true;
-            pslash.x = -30;
+            pslash.x = -6;
         }
         else
         {
             rsprites.flipX = false;
             rslashrender.flipX = false;
-            pslash.x = 32.7f;
+            pslash.x = 5f;
         }
         slasher.transform.localPosition = pslash;
         slasher.SetActive(true);
@@ -68,26 +82,44 @@ public class player_animator : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         rsprites.sprite = idl;
         slasher.SetActive(false);
+        attacking = false;
         yield return null;
     }
     public IEnumerator Move(bool rigth)
     {
-        print("fe");
         for (int i = 0; i < startmove.Length; i++)
         {
+            turn(rigth);
             rsprites.sprite = startmove[i];
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil( () => { return !attacking;});
         }
-        while (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+        int y = 0;
+        while (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
-            int i = 0;
-            rsprites.sprite = moving[i];
-            yield return new WaitForSeconds(0.3f);
-            if (i > moving.Length) i = 0;
+            turn(rigth);
+            rsprites.sprite = moving[y];
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => { return !attacking;});
+            //print(y);
+            y++;
+            if (y >= moving.Length)
+            {
+                y = 0;
+            }
+        }
+        for (int i = startmove.Length-1; i >= 0; i--)
+        {
+            turn(rigth);
+            rsprites.sprite = startmove[i];
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => { return !attacking;});
         }
         rsprites.sprite = idl;
         m = false;
         yield return null;
     }
+    
 }
+
 

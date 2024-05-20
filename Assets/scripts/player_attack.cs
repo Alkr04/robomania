@@ -37,7 +37,7 @@ public class player_attack : MonoBehaviour
                 if (ray = Physics2D.BoxCast(this.gameObject.transform.position, transform.localScale/2, 0, Vector2.right,attack))
                 {
                     //print("rigth");
-                    print(ray.transform.tag);
+                    //print(ray.transform.tag);
                     if (ray.collider.tag == "enemy")
                     {
                         sorce.PlayOneShot(slash);
@@ -80,7 +80,7 @@ public class player_attack : MonoBehaviour
                             
                             if (i < moving.Children.Count && child.gameObject == moving.Children[i])
                             {
-                                 print(i);
+                                 //print(i);
                             }
                             else
                             {

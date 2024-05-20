@@ -24,6 +24,8 @@ public class moving : MonoBehaviour
     public AudioSource sorce;
     public GameObject died;
     public player_animator panim;
+    public Transform smoke;
+    Vector2 smo = new Vector2(-0.317f, 0.542f); 
     
 
 
@@ -39,7 +41,7 @@ public class moving : MonoBehaviour
             health.Push(Hbar.transform);
         }*/
         foreach(Transform child in Hbar) Children.Add(child.gameObject);
-        print(Children.Count);
+        //print(Children.Count);
         hp = Children.Count;
         /*for (int i = 1; i < H.Length; i++)
         {
@@ -67,6 +69,7 @@ public class moving : MonoBehaviour
             }
             if (move)
             {
+                smo.x = -0.317f;
                 panim.smove(attack.rigth);
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
             }
@@ -87,10 +90,12 @@ public class moving : MonoBehaviour
             }
             if (move)
             {
+                smo.x = 0.317f;
                 panim.smove(attack.rigth);
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
             }
         }
+        smoke.transform.localPosition = smo;
     }
     /*bool ground()
     {
@@ -152,7 +157,7 @@ public class moving : MonoBehaviour
             hp--;
             Destroy(Children[hp]);
             Children.Remove(Children[hp]);
-            print("test");
+            //print("test");
             if(hp <= 0)
             {
                 //Destroy(this.gameObject);
