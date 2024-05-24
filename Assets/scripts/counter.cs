@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class counter : MonoBehaviour
 {
     int scean;
+    public int point = 0;
+    public int returnscore()
+    {
+        return point;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +32,19 @@ public class counter : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Return))
         {
+            
             restart();
         }
     }
 
     public void exit()
     {
+        WriteToFile.AccessPoint.WriteScoreToFile(returnscore());
         Application.Quit();
     }
     public void restart()
     {
+        point = 0;
         SceneManager.LoadScene(scean);
     }
 }

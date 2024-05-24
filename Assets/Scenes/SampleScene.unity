@@ -21189,6 +21189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2013732243}
   - component: {fileID: 2013732242}
+  - component: {fileID: 2013732244}
   m_Layer: 0
   m_Name: manager
   m_TagString: Counter
@@ -21208,6 +21209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516c7e41b88acb441a26af0294a3c3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point: 0
 --- !u!4 &2013732243
 Transform:
   m_ObjectHideFlags: 0
@@ -21223,6 +21225,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2013732244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013732241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd67fe6e01013e145bc789e918f5f1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2020696066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6207610109828529844, guid: 116cf1a39cf86c948a17fedaa7de0253, type: 3}
@@ -22726,10 +22740,10 @@ PrefabInstance:
       propertyPath: sorce
       value: 
       objectReference: {fileID: 444451073}
-    - target: {fileID: 1376737716193831524, guid: 9953058d98ead76498f7b1e58acd6cfb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 3134468152044863091, guid: 9953058d98ead76498f7b1e58acd6cfb, type: 3}
+      propertyPath: count
+      value: 
+      objectReference: {fileID: 2013732242}
     - target: {fileID: 4768485225822162798, guid: 9953058d98ead76498f7b1e58acd6cfb, type: 3}
       propertyPath: m_Name
       value: enemy_1

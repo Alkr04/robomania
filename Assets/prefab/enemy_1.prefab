@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4768485225822162798}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -222,3 +222,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   Stank: {fileID: 2521896430570367703, guid: 91fec851f4dc5974787e815f1b544fb5, type: 3}
+  count: {fileID: 0}
